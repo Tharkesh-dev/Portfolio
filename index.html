@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tharakeshwaran — Content strategist & product builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f4f2; --fg:#0a0a0c; --mute:#4a4a52; --line:#cfcfca; --card:#e8e8e4;
+  --a1:hsl(232 75% 60%); --a2:hsl(262 70% 58%); --a3:hsl(292 60% 58%);
+  --d:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#09090b;--fg:#f4f4f1;--mute:#a4a4ad;--line:#2a2a30;--card:#131316}}
+:root[data-theme="dark"]{--bg:#09090b;--fg:#f4f4f1;--mute:#a4a4ad;--line:#2a2a30;--card:#131316}
+*{box-sizing:border-box;margin:0;border-radius:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{background:var(--bg);color:var(--fg);font:500 17px/1.55 var(--d);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:2px solid var(--fg)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{display:flex;flex-direction:column;line-height:1;text-transform:uppercase}
+.logo b{font:700 24px var(--d);letter-spacing:-.04em}
+.logo small{font:500 10px var(--d);letter-spacing:.14em;color:var(--mute);margin-top:4px}
+nav{display:flex;gap:22px;align-items:center;font:700 13px var(--d);text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+nav a:hover,nav a.on{color:var(--fg)}
+nav a.on{box-shadow:0 2px 0 var(--fg)}
+#theme{background:none;border:2px solid var(--fg);color:var(--fg);width:32px;height:32px;cursor:pointer;font-size:14px}
+#theme:hover{background:var(--fg);color:var(--bg)}
+.hero{position:relative;padding:96px 0 88px;isolation:isolate}
+.hero::before{content:"";position:absolute;z-index:-1;right:0;top:72px;width:340px;height:340px;max-width:46vw;max-height:46vw;
+  border:2px solid var(--fg);background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 40%,transparent),color-mix(in srgb,var(--a3) 40%,transparent))}
+.eyebrow{display:inline-block;font:700 12px var(--d);letter-spacing:.14em;text-transform:uppercase;border:2px solid var(--fg);padding:6px 12px;margin-bottom:32px}
+h1{font:700 clamp(46px,10vw,132px)/.92 var(--d);letter-spacing:-.045em;text-transform:uppercase;max-width:12ch}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--fg)}
+.lede{max-width:540px;margin-top:36px;color:var(--mute);font-size:19px;font-weight:500}
+.cta{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+.btn{padding:14px 26px;border:2px solid var(--fg);font:700 14px var(--d);text-transform:uppercase;letter-spacing:.06em;transition:.15s;background:var(--bg)}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--a2)}
+section{padding:72px 0;border-top:2px solid var(--fg)}
+.grid{display:grid;grid-template-columns:200px 1fr;gap:32px}
+.label{font:700 12px var(--d);letter-spacing:.14em;text-transform:uppercase}
+.label::before{content:"■ ";color:var(--a2)}
+h2{font:700 clamp(30px,4.6vw,56px)/1 var(--d);letter-spacing:-.035em;text-transform:uppercase;margin-bottom:24px;max-width:16ch}
+p+p{margin-top:16px}
+.muted{color:var(--mute)}
+.rows>div{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:28px 0;border-bottom:2px solid var(--fg)}
+.rows>div:first-child{padding-top:0}
+.rows b{font:700 15px var(--d);color:var(--a2)}
+.rows h3{font:700 clamp(24px,3vw,34px)/1.1 var(--d);letter-spacing:-.025em;text-transform:uppercase;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{padding:10px 18px;border:2px solid var(--fg);font:700 14px var(--d);text-transform:uppercase;letter-spacing:.04em;transition:.15s}
+.chips span:hover{background:var(--fg);color:var(--bg);box-shadow:4px 4px 0 var(--a2);transform:translate(-2px,-2px)}
+.job{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
+.job h3{font:700 clamp(28px,4vw,44px)/1 var(--d);letter-spacing:-.03em;text-transform:uppercase}
+.big{font:700 clamp(30px,7.4vw,96px)/1 var(--d);letter-spacing:-.045em;display:inline-block;border-bottom:4px solid var(--fg);padding-bottom:6px;transition:.2s;word-break:break-word}
+.big:hover{color:var(--a2);border-color:var(--a2)}
+.links{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.links a{border:2px solid var(--fg);padding:10px 18px;font:700 13px var(--d);text-transform:uppercase;letter-spacing:.06em;transition:.15s}
+.links a:hover{background:var(--fg);color:var(--bg)}
+footer{padding:28px 0;border-top:2px solid var(--fg);font:700 12px var(--d);text-transform:uppercase;letter-spacing:.08em}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.ph{padding:80px 0 48px}
+.works{display:grid;gap:40px;padding-bottom:96px}
+.work .frame{aspect-ratio:16/10;background:var(--card);border:2px solid var(--fg);display:grid;place-items:center;color:var(--mute);font:700 13px var(--d);text-transform:uppercase;letter-spacing:.08em;overflow:hidden;transition:.15s}
+.work .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.work:hover .frame{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--a2)}
+.meta{display:flex;justify-content:space-between;gap:16px;margin-top:18px;flex-wrap:wrap;align-items:baseline}
+.meta h3{font:700 26px var(--d);letter-spacing:-.02em;text-transform:uppercase}
+.tag{font:700 12px var(--d);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.built{margin-bottom:72px;border-top:2px solid var(--fg)}
+.built a{display:grid;grid-template-columns:1fr auto;gap:16px;padding:26px 0;border-bottom:2px solid var(--fg);transition:.15s;align-items:center}
+.built a:hover{background:var(--fg);color:var(--bg);padding-left:16px;padding-right:16px}
+.built h3{font:700 clamp(30px,5vw,56px)/1 var(--d);letter-spacing:-.035em;text-transform:uppercase}
+.built span{font-size:15px}
+.built a:hover span{color:var(--bg)}
+[hidden]{display:none!important}
+.fade{animation:up .7s ease both}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}html{scroll-behavior:auto}}
+@media (min-width:820px){.works{grid-template-columns:1fr 1fr}.works .work:first-child{grid-column:1/-1}.feat{grid-template-columns:1fr 1fr}}
+@media (max-width:720px){.grid{grid-template-columns:1fr;gap:16px}.hero{padding:64px 0 56px}section{padding:52px 0}nav{gap:14px}.hero::before{opacity:.5}}
+
+.feat{display:grid;gap:40px;margin-bottom:80px}
+a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.frame.dark{background:#000;border-color:var(--fg)}.frame.light{background:#f4f4f4}
+.frame.dark img{object-fit:cover}.frame.light img{object-fit:contain}
+#viewer{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.vbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 24px;border-bottom:2px solid var(--fg)}
+.vbar b{display:block;font:700 22px/1 var(--d);letter-spacing:-.03em;text-transform:uppercase}
+.vbar small{font:700 11px var(--d);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.vctl{display:flex;gap:8px}
+.vctl button{width:38px;height:38px;border:2px solid var(--fg);background:var(--bg);color:var(--fg);font:700 18px var(--d);cursor:pointer}
+.vctl button:hover{background:var(--fg);color:var(--bg)}
+.vscroll{flex:1;overflow:auto;padding:24px 32px 32px 24px;touch-action:pan-x pan-y pinch-zoom}
+#vimg{display:block;max-width:none;border:2px solid var(--fg);box-shadow:8px 8px 0 var(--a2);background:#fff}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#/"><b>Forge</b><small>Tharakeshwaran</small></a>
+  <nav>
+    <a href="#/" data-r="home">Home</a>
+    <a href="#/projects" data-r="projects">Projects</a>
+    <a href="#/contact">Contact</a>
+    <button id="theme" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main>
+<!-- HOME -->
+<div id="home">
+  <div class="wrap">
+    <div class="hero fade">
+      <p class="eyebrow">Content strategist · Product builder</p>
+      <h1>I turn ideas into <em>products</em> people use.</h1>
+      <p class="lede">I run content strategy for a premium entertainment publication and build mobile and web apps with AI-native tools, guided by real product judgment.</p>
+      <div class="cta">
+        <a class="btn solid" href="#/projects">View projects</a>
+        <a class="btn" href="#/contact">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="about"><div class="wrap grid">
+    <div class="label">About</div>
+    <div>
+      <h2>Editorial mind. Builder's hands.</h2>
+      <p class="muted">I work as a UX analyst for AltBollywood, a digital publication covering Bollywood and OTT. I design the systems behind it: writer personas and the prompts that keep output consistent at scale.</p>
+      <p class="muted">Outside that, I build products on my own without a traditional engineering background. I build web applications and develop websites and ship it.</p>
+    </div>
+  </div></section>
+
+  <section id="services"><div class="wrap grid">
+    <div class="label">What I do</div>
+    <div class="rows">
+      <div><b>02</b><div><h3>Product building</h3><p class="muted">Mobile and web apps from idea to working screens, built with AI-native tooling and clear product thinking.</p></div></div>
+      <div><b>01</b><div><h3>Content strategy</h3><p class="muted">Editorial direction, article templates and SEO structure for publications that need to scale without losing voice.</p></div></div>s
+      <div><b>03</b><div><h3>Systems &amp; prompts</h3><p class="muted">Writer personas and system prompts that turn a content playbook into repeatable production.</p></div></div>
+    </div>
+  </div></section>
+
+  <section id="toolkit"><div class="wrap grid">
+    <div class="label">Toolkit</div>
+    <div class="chips"><span>System prompts</span><span>SEO</span><span>Editorial systems</span><span>Python</span><span>Mobile apps</span><span>Web apps</span></div>
+  </div></section>
+
+  <section id="experience"><div class="wrap grid">
+    <div class="label">Experience</div>
+    <div>
+      <div class="job"><h3>AltBollywood</h3><span class="muted">Jr. Editor &amp; UX Analyst</span></div>
+      <p class="muted" style="margin-top:12px;max-width:52ch">Building the editorial system for a premium Indian digital entertainment publication: personas, templates and production workflows.</p>
+    </div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <p class="label" style="margin-bottom:28px">Contact</p>
+    <a class="big" href="mailto:tharkeshmuthu1507.com">tharkesh@gmail.com</a>
+    <div class="links"><a href="https://www.linkedin.com/in/tharkesh/">LinkedIn</a><a href="https://github.com/Tharkesh-dev">GitHub</a><a href="#">Instagram</a></div>
+  </div></section>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" hidden>
+  <div class="wrap">
+    <div class="ph fade">
+      <p class="eyebrow">Projects</p>
+      <h1 style="max-width:14ch">Selected work.</h1>
+    </div>
+
+    <p class="label" style="margin-bottom:28px">Designs and Featured</p>
+    <div class="feat">
+      <a class="work" href="https://webintrinsix.github.io/Web-Intrinsix/" target="_blank" rel="noopener">
+        <div class="frame dark"><img src="images/project-1.jpg" alt="Web Intrinsix website"></div>
+        <div class="meta"><h3>Web Intrinsix</h3><span class="tag">Web · Live site ↗</span></div>
+      </a>
+      <button class="work" id="voyaBtn" type="button">
+        <div class="frame light"><img src="images/project-2.png" alt="Voya app"></div>
+        <div class="meta"><h3>Voya</h3><span class="tag">Mobile app · View design PDF ↗</span></div>
+      </button>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Tharakeshwaran</span><a href="#/">Back to top ↑</a></div></footer>
+
+<div id="viewer" role="dialog" aria-modal="true" aria-label="Voya app design" hidden>
+  <div class="vbar"><div><b>Voya</b><small>Urban transit · App design</small></div>
+    <div class="vctl"><button id="zo" aria-label="Zoom out">−</button><button id="zi" aria-label="Zoom in">+</button><button id="vx" aria-label="Close">✕</button></div></div>
+  <div class="vscroll"><img id="vimg" src="images/project-3.jpg" alt="Voya app screens"></div>
+</div>
+
+<script>
+const home=document.getElementById('home'),proj=document.getElementById('projects');
+function route(){
+  const h=location.hash.replace(/^#\/?/,'');
+  const p=h==='projects';
+  home.hidden=p;proj.hidden=!p;
+  document.querySelectorAll('nav a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===(p?'projects':'home')));
+  if(p||!h)window.scrollTo(0,0);
+  else{const el=document.getElementById(h);if(el)el.scrollIntoView();}
+}
+addEventListener('hashchange',route);route();
+document.getElementById('theme').onclick=()=>{
+  const r=document.documentElement,dark=matchMedia('(prefers-color-scheme:dark)').matches;
+  const cur=r.dataset.theme||(dark?'dark':'light');
+  r.dataset.theme=cur==='dark'?'light':'dark';
+};
+
+const V=document.getElementById('viewer'),vi=document.getElementById('vimg'),W=[1200,1800,2600,3600,5000];
+let zi=innerWidth<720?0:2;vi.style.width=W[zi]+'px';
+function zoom(d){zi=Math.max(0,Math.min(W.length-1,zi+d));vi.style.width=W[zi]+'px'}
+function openV(){V.hidden=false;document.body.style.overflow='hidden';V.querySelector('.vscroll').scrollTo(0,0);document.getElementById('vx').focus()}
+function closeV(){V.hidden=true;document.body.style.overflow='';document.getElementById('voyaBtn').focus()}
+document.getElementById('voyaBtn').onclick=openV;
+document.getElementById('vx').onclick=closeV;
+document.getElementById('zi').onclick=()=>zoom(1);
+document.getElementById('zo').onclick=()=>zoom(-1);
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!V.hidden)closeV()});
+</script>
+</body>
+</html>
