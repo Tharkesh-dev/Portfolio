@@ -79,9 +79,38 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .built span{font-size:15px}
 .built a:hover span{color:var(--bg)}
 [hidden]{display:none!important}
-.fade{animation:up .7s ease both}
-@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.fade{animation:none}html{scroll-behavior:auto}}
+body,header,.btn,.chips span,.links a,.work .frame,.built a,#theme,nav a{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
+.fade{animation:up .7s cubic-bezier(.22,.9,.32,1) both}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.stagger>*{opacity:0;animation:up .7s cubic-bezier(.22,.9,.32,1) both}
+.stagger>*:nth-child(1){animation-delay:.05s}
+.stagger>*:nth-child(2){animation-delay:.16s}
+.stagger>*:nth-child(3){animation-delay:.27s}
+.stagger>*:nth-child(4){animation-delay:.38s}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.9,.32,1),transform .7s cubic-bezier(.22,.9,.32,1)}
+.reveal.in{opacity:1;transform:none}
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:2px;background:var(--fg);transition:right .25s ease}
+nav a:hover::after,nav a.on::after{right:0}
+nav a.on{box-shadow:none}
+.btn{transition:transform .2s cubic-bezier(.22,.9,.32,1),box-shadow .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease}
+.work{transition:transform .3s cubic-bezier(.22,.9,.32,1)}
+.work .frame{transition:transform .35s cubic-bezier(.22,.9,.32,1),box-shadow .3s ease}
+.work .frame img{transition:transform .5s cubic-bezier(.22,.9,.32,1)}
+.work:hover .frame img{transform:scale(1.045)}
+.chips span{transition:transform .2s cubic-bezier(.22,.9,.32,1),box-shadow .2s ease,background-color .2s ease,color .2s ease}
+.big{transition:color .25s ease,border-color .25s ease,transform .25s ease}
+.big:hover{transform:translateX(6px)}
+.links a{transition:transform .2s ease,background-color .2s ease,color .2s ease}
+.links a:hover{transform:translateY(-2px)}
+#theme{transition:transform .4s cubic-bezier(.22,.9,.32,1),background-color .2s ease,color .2s ease}
+#theme:active{transform:rotate(180deg)}
+#home,#projects{transition:opacity .25s ease,transform .25s ease}
+.page-out{opacity:0;transform:translateY(6px)}
+#viewer{opacity:0;transition:opacity .3s ease}
+#viewer:not([hidden]).show{opacity:1}
+#viewer .vscroll img{transition:width .35s cubic-bezier(.22,.9,.32,1)}
+@media (prefers-reduced-motion:reduce){.fade,.stagger>*{animation:none;opacity:1}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.work,.work .frame,.work .frame img,.big,#theme,#home,#projects,#viewer{transition:none}}
 @media (min-width:820px){.works{grid-template-columns:1fr 1fr}.works .work:first-child{grid-column:1/-1}.feat{grid-template-columns:1fr 1fr}}
 @media (max-width:720px){.grid{grid-template-columns:1fr;gap:16px}.hero{padding:64px 0 56px}section{padding:52px 0}nav{gap:14px}.hero::before{opacity:.5}}
 
@@ -98,9 +127,34 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
 .vctl button:hover{background:var(--fg);color:var(--bg)}
 .vscroll{flex:1;overflow:auto;padding:24px 32px 32px 24px;touch-action:pan-x pan-y pinch-zoom}
 #vimg{display:block;max-width:none;border:2px solid var(--fg);box-shadow:8px 8px 0 var(--a2);background:#fff}
+
+#pbar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--a1),var(--a2),var(--a3));z-index:20;transition:width .1s linear}
+body{animation:pageIn .5s ease both}
+@keyframes pageIn{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+.hero::before{animation:float 7s ease-in-out infinite}
+.logo{transition:transform .3s cubic-bezier(.22,.9,.32,1)}
+.logo:hover{transform:rotate(-2deg) scale(1.03)}
+.rows.reveal>div{opacity:0;transform:translateX(-24px);transition:opacity .6s cubic-bezier(.22,.9,.32,1),transform .6s cubic-bezier(.22,.9,.32,1)}
+.rows.reveal.in>div{opacity:1;transform:none}
+.rows.reveal.in>div:nth-child(2){transition-delay:.1s}
+.rows.reveal.in>div:nth-child(3){transition-delay:.2s}
+.chips.reveal>span{opacity:0;transform:scale(.85);transition:opacity .45s cubic-bezier(.22,.9,.32,1),transform .45s cubic-bezier(.22,.9,.32,1)}
+.chips.reveal.in>span{opacity:1;transform:none}
+.chips.reveal.in>span:nth-child(1){transition-delay:.02s}
+.chips.reveal.in>span:nth-child(2){transition-delay:.08s}
+.chips.reveal.in>span:nth-child(3){transition-delay:.14s}
+.chips.reveal.in>span:nth-child(4){transition-delay:.2s}
+.chips.reveal.in>span:nth-child(5){transition-delay:.26s}
+.chips.reveal.in>span:nth-child(6){transition-delay:.32s}
+footer a{display:inline-block;transition:transform .3s cubic-bezier(.22,.9,.32,1)}
+footer a:hover{animation:bounce .6s ease}
+@keyframes bounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}60%{transform:translateY(1px)}}
+@media (prefers-reduced-motion:reduce){body{animation:none}.hero::before{animation:none}.rows.reveal>div,.chips.reveal>span{opacity:1;transform:none;transition:none}footer a:hover{animation:none}#pbar{display:none}}
 </style>
 </head>
 <body>
+<div id="pbar"></div>
 <header><div class="wrap">
   <a class="logo" href="#/"><b>Forge</b><small>Tharakeshwaran</small></a>
   <nav>
@@ -115,7 +169,7 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
 <!-- HOME -->
 <div id="home">
   <div class="wrap">
-    <div class="hero fade">
+    <div class="hero stagger">
       <p class="eyebrow">Content strategist · Product builder</p>
       <h1>I turn ideas into <em>products</em> people use.</h1>
       <p class="lede">I run content strategy for a premium entertainment publication and build mobile and web apps with AI-native tools, guided by real product judgment.</p>
@@ -126,7 +180,7 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
     </div>
   </div>
 
-  <section id="about"><div class="wrap grid">
+  <section id="about"><div class="wrap grid reveal">
     <div class="label">About</div>
     <div>
       <h2>Editorial mind. Builder's hands.</h2>
@@ -135,21 +189,21 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
     </div>
   </div></section>
 
-  <section id="services"><div class="wrap grid">
+  <section id="services"><div class="wrap grid reveal">
     <div class="label">What I do</div>
-    <div class="rows">
+    <div class="rows reveal">
       <div><b>02</b><div><h3>Product building</h3><p class="muted">Mobile and web apps from idea to working screens, built with AI-native tooling and clear product thinking.</p></div></div>
       <div><b>01</b><div><h3>Content strategy</h3><p class="muted">Editorial direction, article templates and SEO structure for publications that need to scale without losing voice.</p></div></div>s
       <div><b>03</b><div><h3>Systems &amp; prompts</h3><p class="muted">Writer personas and system prompts that turn a content playbook into repeatable production.</p></div></div>
     </div>
   </div></section>
 
-  <section id="toolkit"><div class="wrap grid">
+  <section id="toolkit"><div class="wrap grid reveal">
     <div class="label">Toolkit</div>
-    <div class="chips"><span>System prompts</span><span>SEO</span><span>Editorial systems</span><span>Python</span><span>Mobile apps</span><span>Web apps</span></div>
+    <div class="chips reveal"><span>System prompts</span><span>SEO</span><span>Editorial systems</span><span>Python</span><span>Mobile apps</span><span>Web apps</span></div>
   </div></section>
 
-  <section id="experience"><div class="wrap grid">
+  <section id="experience"><div class="wrap grid reveal">
     <div class="label">Experience</div>
     <div>
       <div class="job"><h3>AltBollywood</h3><span class="muted">Jr. Editor &amp; UX Analyst</span></div>
@@ -157,9 +211,9 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
     </div>
   </div></section>
 
-  <section id="contact"><div class="wrap">
+  <section id="contact"><div class="wrap reveal">
     <p class="label" style="margin-bottom:28px">Contact</p>
-    <a class="big" href="mailto:tharkeshmuthu1507.com">tharkesh@gmail.com</a>
+    <a class="big" href="mailto:tharkesh@gmail.com">tharkesh@gmail.com</a>
     <div class="links"><a href="https://www.linkedin.com/in/tharkesh/">LinkedIn</a><a href="https://github.com/Tharkesh-dev">GitHub</a><a href="#">Instagram</a></div>
   </div></section>
 </div>
@@ -167,13 +221,13 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
 <!-- PROJECTS -->
 <div id="projects" hidden>
   <div class="wrap">
-    <div class="ph fade">
+    <div class="ph stagger">
       <p class="eyebrow">Projects</p>
       <h1 style="max-width:14ch">Selected work.</h1>
     </div>
 
     <p class="label" style="margin-bottom:28px">Designs and Featured</p>
-    <div class="feat">
+    <div class="feat reveal">
       <a class="work" href="https://webintrinsix.github.io/Web-Intrinsix/" target="_blank" rel="noopener">
         <div class="frame dark"><img src="images/project-1.jpg" alt="Web Intrinsix website"></div>
         <div class="meta"><h3>Web Intrinsix</h3><span class="tag">Web · Live site ↗</span></div>
@@ -198,15 +252,44 @@ a.work,button.work{display:block;width:100%;background:none;border:0;padding:0;f
 
 <script>
 const home=document.getElementById('home'),proj=document.getElementById('projects');
+const reduceMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+function observeReveals(root){root.querySelectorAll('.reveal').forEach(el=>io.observe(el))}
+function swap(showProjects,onDone){
+  const cur=showProjects?home:proj,next=showProjects?proj:home;
+  const after=()=>{
+    cur.hidden=true;next.hidden=false;next.classList.remove('page-out');
+    document.querySelectorAll('nav a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===(showProjects?'projects':'home')));
+    observeReveals(next);
+    if(onDone)onDone();
+  };
+  if(reduceMotion){after();return}
+  cur.classList.add('page-out');
+  setTimeout(after,180);
+}
 function route(){
   const h=location.hash.replace(/^#\/?/,'');
   const p=h==='projects';
-  home.hidden=p;proj.hidden=!p;
-  document.querySelectorAll('nav a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===(p?'projects':'home')));
-  if(p||!h)window.scrollTo(0,0);
-  else{const el=document.getElementById(h);if(el)el.scrollIntoView();}
+  const doScroll=()=>{
+    if(p||!h)window.scrollTo({top:0,behavior:reduceMotion?'auto':'smooth'});
+    else{const el=document.getElementById(h);if(el)el.scrollIntoView({behavior:reduceMotion?'auto':'smooth'});}
+  };
+  if((p&&proj.hidden)||(!p&&home.hidden)) swap(p,doScroll);
+  else{
+    document.querySelectorAll('nav a[data-r]').forEach(a=>a.classList.toggle('on',a.dataset.r===(p?'projects':'home')));
+    doScroll();
+  }
 }
 addEventListener('hashchange',route);route();
+observeReveals(document);
+function updateBar(){const h=document.documentElement,b=document.body;const st=h.scrollTop||b.scrollTop;const sh=(h.scrollHeight||b.scrollHeight)-h.clientHeight;document.getElementById('pbar').style.width=(sh>0?st/sh*100:0)+'%'}
+addEventListener('scroll',updateBar,{passive:true});updateBar();
+if(!reduceMotion&&matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('.btn').forEach(b=>{
+    b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.18}px,${y*.35}px)`});
+    b.addEventListener('mouseleave',()=>{b.style.transform=''});
+  });
+}
 document.getElementById('theme').onclick=()=>{
   const r=document.documentElement,dark=matchMedia('(prefers-color-scheme:dark)').matches;
   const cur=r.dataset.theme||(dark?'dark':'light');
@@ -216,8 +299,8 @@ document.getElementById('theme').onclick=()=>{
 const V=document.getElementById('viewer'),vi=document.getElementById('vimg'),W=[1200,1800,2600,3600,5000];
 let zi=innerWidth<720?0:2;vi.style.width=W[zi]+'px';
 function zoom(d){zi=Math.max(0,Math.min(W.length-1,zi+d));vi.style.width=W[zi]+'px'}
-function openV(){V.hidden=false;document.body.style.overflow='hidden';V.querySelector('.vscroll').scrollTo(0,0);document.getElementById('vx').focus()}
-function closeV(){V.hidden=true;document.body.style.overflow='';document.getElementById('voyaBtn').focus()}
+function openV(){V.hidden=false;requestAnimationFrame(()=>V.classList.add('show'));document.body.style.overflow='hidden';V.querySelector('.vscroll').scrollTo(0,0);document.getElementById('vx').focus()}
+function closeV(){V.classList.remove('show');document.body.style.overflow='';setTimeout(()=>{V.hidden=true;document.getElementById('voyaBtn').focus()},reduceMotion?0:250)}
 document.getElementById('voyaBtn').onclick=openV;
 document.getElementById('vx').onclick=closeV;
 document.getElementById('zi').onclick=()=>zoom(1);
